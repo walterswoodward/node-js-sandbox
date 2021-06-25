@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    
+</body>
+<script type="text/javascript">
+    window.document.onload = function () {
+    let users = [
+        { name: "Bob" },
+        { name: "Brenton" },
+        { name: "Bill" },
+        { name: "Bartholomew" }
+    ];
+    let root = document.getElementById("root");
+    let usersString = "";
+    users.forEach((user) => usersString += "<li>" + user.name + "</li>");
+    root.innerHTML = "<ul>" + usersString + "</ul>";
+}();
+</script>
+</html>
