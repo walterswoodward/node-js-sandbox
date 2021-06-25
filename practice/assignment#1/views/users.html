@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+</body>
+<script type="text/javascript">
+    window.document.onload = function () {
+        class UserStore {
+            constructor() {
+                this.users = [];
+            }
+
+            add(item) {
+                this.users.push({name: item});
+            }
+
+            get(id) {
+                return this.users.find(d => d.id === id);
+            }
+
+            getAll() {
+                return this.users;
+            }
+        }
+
+        let users = new UserStore;
+        users.add("Bob");
+        users.add("Jane");
+        users.add("Scott");
+        let root = document.getElementById("root");
+        let usersString = "";
+        (users.getAll()).forEach((user) => usersString += "<li>" + user.name + "</li>");
+        root.innerHTML = "<ul>" + usersString + "</ul>";
+    }();
+</script>
+
+</html>
