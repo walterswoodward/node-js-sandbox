@@ -1,0 +1,21 @@
+{
+  "name": "js-sandbox",
+  "version": "1.0.0",
+  "description": "In general a place for me to experiment with building NodeJS tools (servers, backend web apps, file system management tools etc.) using",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walterswoodward/node-js-sandbox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walterswoodward/node-js-sandbox/issues"
+  },
+  "homepage": "https://github.com/walterswoodward/node-js-sandbox#readme"
+}
