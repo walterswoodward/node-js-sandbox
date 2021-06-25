@@ -13,11 +13,14 @@ const server = http.createServer((req, res) => {
   }
   if (url === '/message' && method === 'POST') {
     const body = [];
+    // This and the block below are "registering handlers"
     req.on('data', (chunk) => {
-      console.log(chunk);
+    //   console.log(chunk);
       body.push(chunk);
     });
-    req.on('end', () => {
+    // This is / operates like an event listener, executing the
+    // provided code when the 'end' event is called
+    return req.on('end', () => {
       const parsedBody = Buffer.concat(body).toString();
       const message = parsedBody.split('=')[1];
       fs.writeFileSync('message.txt', message);
@@ -26,12 +29,12 @@ const server = http.createServer((req, res) => {
       return res.end();
     });
   }
-  res.setHeader('Content-Type', 'text/html');
-  res.write('<html>');
-  res.write('<head><title>My First Page</title><head>');
-  res.write('<body><h1>Hello from my Node.js Server!</h1></body>');
-  res.write('</html>');
-  res.end();
+//   res.setHeader('Content-Type', 'text/html');
+//   res.write('<html>');
+//   res.write('<head><title>My First Page</title><head>');
+//   res.write('<body><h1>Hello from my Node.js Server!</h1></body>');
+//   res.write('</html>');
+//   res.end();
 });
 
 server.listen(3000);
