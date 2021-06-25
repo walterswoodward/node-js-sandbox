@@ -11,7 +11,8 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-app.use(adminRoutes);
+// outsource routes
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 // Handle 404
