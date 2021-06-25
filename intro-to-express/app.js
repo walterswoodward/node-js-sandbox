@@ -3,26 +3,20 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
 
-app.post('/add-product', (req, res) => {
-    res.send('<form action="/product" method="POST"><input type="text" name="title"></input><button type="submit">Add Product</button></form>');
-});
+app.use(adminRoutes);
+app.use(shopRoutes);
 
-app.get('/product', (req, res, next) => {
-    console.log(req.body);
-    res.redirect('/');
+// Handle 404
+app.use((req, res, next) => {
+    res.status(404).send('<h1>Page not found</h1>');
 })
-
-// Note that first param is not an exact match but "must begin with"
-//  -- so the order of these app.use blocks matters
-// -- 
-app.use('/', (_req, res) => {
-    res.send('<h1>Hello from Express!</h1>');
-});
-
 
 app.listen(3000);
