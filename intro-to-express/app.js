@@ -13,6 +13,21 @@ app.use(express.urlencoded({
   extended: true
 }));
 
+app.use(
+    "/css",
+    express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
+  )
+  app.use(
+    "/js",
+    express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
+  )
+
+
+// express.static(root, [options])
+// Note (from docs) that you can designate multiple static assets directories: https://expressjs.com/en/starter/static-files.html
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 // outsource routes
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
